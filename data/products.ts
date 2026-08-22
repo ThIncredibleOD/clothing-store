@@ -1,0 +1,38 @@
+const products = [
+  {
+    id: 1,
+    title: "Heavyweight Nylon Trench",
+    price: 320,
+    trending: true,
+    imageSrc: "/best-seller-1.png",
+    alt: "Heavyweight Nylon Trench",
+    href: "/#",
+  },
+  {
+    id: 2,
+    title: "Asymmetric Zip Bomber",
+    price: 99,
+    trending: true,
+    imageSrc: "/best-seller-2.png",
+    alt: "Asymmetric Zip Bomber",
+    href: "/#",
+  },
+  {
+    id: 3,
+    title: "Raw-Edge Ribbed Knit",
+    price: 140,
+    trending: true,
+    imageSrc: "/best-seller-3.png",
+    alt: "Raw-Edge Ribbed Knit",
+    href: "/#",
+  },
+  {
+    id: 4,
+    title: "Modular Crossbody Harness",
+    price: 95,
+    trending: false,
+    imageSrc: "/best-seller-4.png",
+    alt: "Modular Crossbody Harness",
+    href: "/#",
+  },
+];
