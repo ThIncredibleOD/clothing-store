@@ -1,128 +1,23 @@
+import { useStore } from "@/context/StoreContext";
 import { MoveRight, Flame, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Categories() {
-  const categories = [
-    {
-      id: 1,
-      title: "Men's",
-      descriptionImageSrc: "/category-1.png",
-      descriptionImageAlt: "Men's Category",
-      href: "/#",
-      items: [
-        {
-          id: 1,
-          title: "Heavyweight Nylon Trench",
-          price: 320,
-          trending: true,
-          imageSrc: "/best-seller-1.png",
-          alt: "Heavyweight Nylon Trench",
-          href: "/#",
-        },
-
-        {
-          id: 2,
-          title: "Raw-Edge Ribbed Knit",
-          price: 140,
-          trending: false,
-          imageSrc: "/best-seller-3.png",
-          alt: "Raw-Edge Ribbed Knit",
-          href: "/#",
-        },
-        {
-          id: 3,
-          title: "Modular Crossbody Harness",
-          price: 95,
-          trending: true,
-          imageSrc: "/best-seller-4.png",
-          alt: "Modular Crossbody Harness",
-          href: "/#",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Ladies'",
-      descriptionImageSrc: "/category-2.png",
-      descriptionImageAlt: "Ladies' Category",
-      href: "/#",
-      items: [
-        {
-          id: 1,
-          title: "Asymmetric Zip Bomber",
-          price: 99,
-          trending: true,
-          imageSrc: "/best-seller-2.png",
-          alt: "Asymmetric Zip Bomber",
-          href: "/#",
-        },
-        {
-          id: 2,
-          title: "Ladies' Parachute Cargo Maxi Skirt",
-          price: 175,
-          trending: true,
-          imageSrc: "/category-4.png",
-          alt: "Raw-Edge Ribbed Knit",
-          href: "/#",
-        },
-        {
-          id: 3,
-          title: "Ladies' Ribbed Corset Zip-Up Top",
-          price: 120,
-          trending: false,
-          imageSrc: "/category-5.png",
-          alt: "Modular Crossbody Harness",
-          href: "/#",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Kids'",
-      descriptionImageSrc: "/category-3.png",
-      descriptionImageAlt: "Kids' Category",
-      href: "/#",
-      items: [
-        {
-          id: 1,
-          title: "Kid's Mini Varsity Puffer Vest",
-          price: 145,
-          trending: true,
-          imageSrc: "/category-6.png",
-          alt: "Heavyweight Nylon Trench",
-          href: "/#",
-        },
-        {
-          id: 2,
-          title: "Kid's Distressed Denim Cargos",
-          price: 110,
-          trending: false,
-          imageSrc: "/category-7.png",
-          alt: "Asymmetric Zip Bomber",
-          href: "/#",
-        },
-        {
-          id: 3,
-          title: "Raw-Edge Ribbed Knit",
-          price: 85,
-          trending: false,
-          imageSrc: "/category-8.png",
-          alt: "Raw-Edge Ribbed Knit",
-          href: "/#",
-        },
-      ],
-    },
-  ];
+  const { categories, products } = useStore();
 
   return (
     <section className="p-4 pb-40">
       <ul className="flex flex-col gap-12">
         {categories.map((category, index) => {
+          const categoryProducts = products.filter((product) =>
+            category.items.includes(product.id),
+          );
+
           return (
             <li
               key={category.id}
-              className={`flex flex-col ${(index + 1) % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} gap-6`}
+              className={`flex flex-col ${(index + 1) % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} gap-6 cursor-pointer`}
             >
               <div className="flex md:hidden items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -169,7 +64,7 @@ export default function Categories() {
                 <ul
                   className={`collections-scroll flex ${(index + 1) % 2 === 0 ? "md:border-r-2 md:border-r-[hsla(52,98%,53%,1)] md:pr-6" : "md:border-l-2 md:border-l-[hsla(52,98%,53%,1)] md:pl-6"} justify-between gap-10 overflow-x-auto min-w-0`}
                 >
-                  {category.items.map((item) => (
+                  {categoryProducts.map((item) => (
                     <li
                       key={item.id}
                       className="relative flex w-75 shrink-0 flex-col justify-between"

@@ -1,45 +1,11 @@
 import Image from "next/image";
 import { ShoppingCart, Flame } from "lucide-react";
+import { useStore } from "@/context/StoreContext";
 
 export default function BestSellers() {
-  const bestSellers = [
-    {
-      id: 1,
-      title: "Heavyweight Nylon Trench",
-      price: 320,
-      trending: true,
-      imageSrc: "/best-seller-1.png",
-      alt: "Heavyweight Nylon Trench",
-      href: "/#",
-    },
-    {
-      id: 2,
-      title: "Asymmetric Zip Bomber",
-      price: 99,
-      trending: true,
-      imageSrc: "/best-seller-2.png",
-      alt: "Asymmetric Zip Bomber",
-      href: "/#",
-    },
-    {
-      id: 3,
-      title: "Raw-Edge Ribbed Knit",
-      price: 140,
-      trending: true,
-      imageSrc: "/best-seller-3.png",
-      alt: "Raw-Edge Ribbed Knit",
-      href: "/#",
-    },
-    {
-      id: 4,
-      title: "Modular Crossbody Harness",
-      price: 95,
-      trending: false,
-      imageSrc: "/best-seller-4.png",
-      alt: "Modular Crossbody Harness",
-      href: "/#",
-    },
-  ];
+  const { products } = useStore();
+
+  const bestSellers = products.filter((product) => product.isBestSeller);
 
   return (
     <section className="p-8 md:p-12 flex flex-col gap-10">
@@ -52,7 +18,7 @@ export default function BestSellers() {
         {bestSellers.map((bestSeller) => (
           <li
             key={bestSeller.id}
-            className="relative flex w-75 shrink-0 flex-col justify-between"
+            className="relative flex w-75 shrink-0 flex-col justify-between cursor-pointer"
           >
             {bestSeller.trending && (
               <div className="absolute top-0 left-0 flex w-fit items-center gap-1 rounded-full bg-[hsla(52,98%,53%,1)] p-2">

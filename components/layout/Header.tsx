@@ -61,17 +61,21 @@ export default function Header() {
       className="fixed top-0 left-0 right-0 z-10 p-5 text-black"
     >
       <div
-        role="button"
-        className={`${dark ? "bg-black/10" : "bg-white/30"} backdrop-blur-md w-full flex items-center justify-between pr-5 rounded-full shadow-[0_5px_4px_hsla(0,0%,0%,0.25)] cursor-pointer`}
-        onClick={() => router.push("/")}
+        className={`${dark ? "bg-black/10" : "bg-white/30"} backdrop-blur-md w-full flex items-center justify-between pr-5 rounded-full shadow-[0_5px_4px_hsla(0,0%,0%,0.25)]`}
       >
-        <Image
-          src="/logo.png"
-          width="80"
-          height="80"
-          alt="logo image"
-          className="object-cover"
-        />
+        <div
+          role="button"
+          className="relative cursor-pointer"
+          onClick={() => router.push("/")}
+        >
+          <Image
+            src="/logo.png"
+            width="80"
+            height="80"
+            alt="logo image"
+            className="object-cover"
+          />
+        </div>
 
         <nav className="hidden md:flex gap-4 md:gap-8 text-white font-bold">
           {navItems.map((item) => {
