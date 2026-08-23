@@ -20,7 +20,7 @@ export default function Product() {
     <main>
       <ProductInfo product={product} productReviews={productReviews} />
       <CompleteTheFit />
-      <ContentBreakdown />
+      <ContentBreakdown product={product} />
       <CustomerReviews />
     </main>
   );

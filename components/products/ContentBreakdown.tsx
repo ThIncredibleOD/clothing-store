@@ -3,7 +3,7 @@
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
-export default function ContentBreakdown() {
+export default function ContentBreakdown({ product }) {
   const [openedContent, setOpenedContent] = useState(null);
 
   const contentBreakdown = [
