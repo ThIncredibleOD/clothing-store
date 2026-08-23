@@ -24,7 +24,7 @@ export default function FullCollection() {
           >
             <div className="flex justify-center">
               <Image
-                src={collection.imageSrc}
+                src={collection.images[0]}
                 height={250}
                 width={250}
                 alt={collection.alt}

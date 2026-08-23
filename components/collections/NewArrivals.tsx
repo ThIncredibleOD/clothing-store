@@ -33,7 +33,7 @@ export default function NewArrivals() {
 
             <div className="flex justify-center">
               <Image
-                src={newArrival.imageSrc}
+                src={newArrival.images[0]}
                 height={250}
                 width={250}
                 alt={newArrival.alt}

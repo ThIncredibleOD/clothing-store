@@ -31,7 +31,7 @@ export default function BestSellers() {
 
             <div className="flex justify-center">
               <Image
-                src={bestSeller.imageSrc}
+                src={bestSeller.images[0]}
                 height={250}
                 width={250}
                 alt={bestSeller.alt}

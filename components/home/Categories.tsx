@@ -80,7 +80,7 @@ export default function Categories() {
 
                       <div className="flex justify-center">
                         <Image
-                          src={item.imageSrc}
+                          src={item.images[0]}
                           height={250}
                           width={250}
                           alt={item.alt}
