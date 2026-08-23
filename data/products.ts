@@ -11,6 +11,12 @@ export const products = [
     isNewArrival: true,
     category: "MEN",
     sizes: ["S", "M", "L", "XL"],
+    units: {
+      S: 8,
+      M: 12,
+      L: 7,
+      XL: 4,
+    },
   },
 
   {
@@ -25,6 +31,12 @@ export const products = [
     isNewArrival: true,
     category: "LADIES",
     sizes: ["XS", "S", "M", "L"],
+    units: {
+      XS: 5,
+      S: 9,
+      M: 14,
+      L: 6,
+    },
   },
 
   {
@@ -39,6 +51,12 @@ export const products = [
     isNewArrival: true,
     category: "MEN",
     sizes: ["S", "M", "L", "XL"],
+    units: {
+      S: 6,
+      M: 11,
+      L: 8,
+      XL: 3,
+    },
   },
 
   {
@@ -53,6 +71,9 @@ export const products = [
     isNewArrival: true,
     category: "MEN",
     sizes: ["ONE SIZE"],
+    units: {
+      "ONE SIZE": 15,
+    },
   },
 
   {
@@ -67,6 +88,13 @@ export const products = [
     isNewArrival: false,
     category: "LADIES",
     sizes: ["XS", "S", "M", "L", "XL"],
+    units: {
+      XS: 4,
+      S: 8,
+      M: 10,
+      L: 6,
+      XL: 2,
+    },
   },
 
   {
@@ -81,6 +109,12 @@ export const products = [
     isNewArrival: false,
     category: "LADIES",
     sizes: ["XS", "S", "M", "L"],
+    units: {
+      XS: 7,
+      S: 12,
+      M: 9,
+      L: 5,
+    },
   },
 
   {
@@ -95,6 +129,12 @@ export const products = [
     isNewArrival: false,
     category: "KIDS",
     sizes: ["XS", "S", "M", "L"],
+    units: {
+      XS: 5,
+      S: 8,
+      M: 10,
+      L: 4,
+    },
   },
 
   {
@@ -109,6 +149,12 @@ export const products = [
     isNewArrival: false,
     category: "KIDS",
     sizes: ["XS", "S", "M", "L"],
+    units: {
+      XS: 6,
+      S: 11,
+      M: 8,
+      L: 3,
+    },
   },
 
   {
@@ -123,5 +169,11 @@ export const products = [
     isNewArrival: false,
     category: "KIDS",
     sizes: ["XS", "S", "M", "L"],
+    units: {
+      XS: 4,
+      S: 9,
+      M: 7,
+      L: 2,
+    },
   },
 ];

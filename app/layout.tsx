@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { StoreProvider } from "@/context/StoreContext";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
+import { reviews } from "@/data/reviews";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <StoreProvider value={{ products, categories }}>
+        <StoreProvider value={{ products, categories, reviews }}>
           <Header />
           {children}
           <ScrollToTop />
