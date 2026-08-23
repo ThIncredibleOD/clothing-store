@@ -6,27 +6,6 @@ import { useState } from "react";
 export default function ContentBreakdown({ product }) {
   const [openedContent, setOpenedContent] = useState(null);
 
-  const contentBreakdown = [
-    {
-      id: 1,
-      title: "DESIGN NARRATIVE",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi odio aspernatur animi aperiam! Placeat in, dignissimos accusamus repudiandae delectus nihil aliquam enim debitis, assumend cupiditate tenetur doloribus ex numquam fugit?",
-    },
-    {
-      id: 2,
-      title: "TECHNICAL SPECS",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi odio aspernatur animi aperiam! Placeat in, dignissimos accusamus repudiandae delectus nihil aliquam enim debitis, assumend cupiditate tenetur doloribus ex numquam fugit?",
-    },
-    {
-      id: 3,
-      title: " THE DELIVERY",
-      description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi odio aspernatur animi aperiam! Placeat in, dignissimos accusamus repudiandae delectus nihil aliquam enim debitis, assumend cupiditate tenetur doloribus ex numquam fugit?",
-    },
-  ];
-
   const handleOpenContent = (id) => {
     if (openedContent !== id) {
       setOpenedContent(id);
@@ -43,11 +22,12 @@ export default function ContentBreakdown({ product }) {
       </header>
 
       <ul className="flex flex-col gap-4">
-        {contentBreakdown.map((item) => {
+        {product.contentBreakdown.map((item) => {
           return (
             <li
               key={item.id}
-              className="flex flex-col gap-4 border-b border-b-[hsla(52,98%,53%,1)] p-4 rounded-2xl"
+              className="flex flex-col gap-4 border-b border-b-[hsla(52,98%,53%,1)] p-4 rounded-2xl cursor-pointer"
+              onClick={() => handleOpenContent(item.id)}
             >
               <div className="flex-1 flex justify-between items-center">
                 <p className="text-xl">{item.title}</p>

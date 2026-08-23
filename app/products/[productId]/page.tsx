@@ -20,7 +20,9 @@ export default function Product() {
     <main>
       <ProductInfo product={product} productReviews={productReviews} />
       <CompleteTheFit />
-      <ContentBreakdown product={product} />
+      {product.contentBreakdown.length > 0 && (
+        <ContentBreakdown product={product} />
+      )}
       <CustomerReviews />
     </main>
   );
