@@ -120,7 +120,7 @@ export default function CustomerReviews() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl font-bold ">The Fit & Silhouette</h2>
+              <h2 className="text-2xl font-bold">The Fit & Silhouette</h2>
               <p className="text-md leading-8">
                 The silhouette on this is crazy. The drop shoulder is perfectly
                 executed and the drape of the nylon gives it a very
