@@ -40,7 +40,7 @@ export default function ProductInfo({
     setCurrentSlide(number);
   };
 
-  const hadnleDecreaseQuantity = () => {
+  const handleDecreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
@@ -172,7 +172,7 @@ export default function ProductInfo({
           <div className="flex w-fit justify-between items-center gap-10">
             <button
               className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
-              onClick={hadnleDecreaseQuantity}
+              onClick={handleDecreaseQuantity}
             >
               <Minus />
             </button>
