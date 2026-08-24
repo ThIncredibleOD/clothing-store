@@ -1,11 +1,8 @@
 import Image from "next/image";
 import { ShoppingCart, Flame } from "lucide-react";
-import { useStore } from "@/context/StoreContext";
 import Link from "next/link";
 
-export default function BestSellers() {
-  const { products } = useStore();
-
+export default function BestSellers({ products }) {
   const bestSellers = products.filter((product) => product.isBestSeller);
 
   return (

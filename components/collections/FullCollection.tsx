@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
+import Link from "next/link";
 
 export default function FullCollection() {
   const { products } = useStore();
@@ -20,29 +21,31 @@ export default function FullCollection() {
         {fullCollections.map((collection) => (
           <li
             key={collection.id}
-            className="relative flex w-full shrink-0 flex-col justify-between md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.667rem)] cursor-pointer"
+            className="relative flex w-full shrink-0 flex-col gap-6 justify-between md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.667rem)]"
           >
-            <div className="flex justify-center">
-              <Image
-                src={collection.images[0]}
-                height={250}
-                width={250}
-                alt={collection.alt}
-              />
-            </div>
+            <Link
+              href={`/products/${collection.id}`}
+              className="flex-1 flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={collection.images[0]}
+                  height={250}
+                  width={250}
+                  alt={collection.alt}
+                />
+              </div>
 
-            <div className="flex flex-col gap-6">
               <h3 className="text-xl font-bold md:text-2xl">
                 {collection.title}
               </h3>
+            </Link>
+            <div className="flex items-center justify-between">
+              <p className="md:text-lg">${collection.price}</p>
 
-              <div className="flex items-center justify-between">
-                <p className="md:text-lg">${collection.price}</p>
-
-                <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-[hsla(0,0%,100%,0.4)]">
-                  <ShoppingCart size="20" />
-                </button>
-              </div>
+              <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-[hsla(0,0%,100%,0.4)]">
+                <ShoppingCart size="20" />
+              </button>
             </div>
           </li>
         ))}

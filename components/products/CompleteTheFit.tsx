@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 export default function CompleteTheFit() {
   const fits = [
@@ -48,26 +49,28 @@ export default function CompleteTheFit() {
         {fits.map((item) => (
           <li
             key={item.id}
-            className="relative flex w-75 shrink-0 flex-col justify-between"
+            className="relative flex w-75 shrink-0 flex-col justify-between gap-6"
           >
-            <div className="flex justify-center">
-              <Image
-                src={item.imageSrc}
-                height={250}
-                width={250}
-                alt={item.alt}
-              />
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <h3 className="text-xl md:text-2xl font-bold">{item.title}</h3>
-
-              <div className="flex items-center justify-between">
-                <p className="md:text-lg">${item.price}</p>
-                <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[hsla(0,0%,100%,0.4)] border-solid cursor-pointer">
-                  <ShoppingCart size="20" />
-                </button>
+            <Link
+              href={`/products/${item.id}`}
+              className="flex-1 flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={item.imageSrc}
+                  height={250}
+                  width={250}
+                  alt={item.alt}
+                />
               </div>
+
+              <h3 className="text-xl md:text-2xl font-bold">{item.title}</h3>
+            </Link>
+            <div className="flex items-center justify-between">
+              <p className="md:text-lg">${item.price}</p>
+              <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[hsla(0,0%,100%,0.4)] border-solid cursor-pointer">
+                <ShoppingCart size="20" />
+              </button>
             </div>
           </li>
         ))}
