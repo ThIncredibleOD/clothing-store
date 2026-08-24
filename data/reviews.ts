@@ -7,7 +7,7 @@ export const reviews = [
     rating: 5,
     comment: "Love the design. It fits really well.",
     date: "12-08-2026",
-    images: ["/reviews/review-1.png", "/reviews/review-2.png"],
+    images: ["/home-1.png", "/home-1.png", "/home-1.png", "/home-1.png"],
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const reviews = [
     rating: 5,
     comment: "Great quality and the fit is perfect. Really impressed.",
     date: "10-08-2026",
-    images: ["/reviews/review-3.png"],
+    images: ["/home-1.png"],
   },
   {
     id: 3,
@@ -37,6 +37,6 @@ export const reviews = [
     rating: 4,
     comment: "Very comfortable and the quality is solid.",
     date: "05-08-2026",
-    images: ["/reviews/review-4.png", "/reviews/review-5.png"],
+    images: ["/home-1.png", "/home-1.png"],
   },
 ];

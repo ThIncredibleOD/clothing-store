@@ -1,36 +1,16 @@
 import { ChevronRight, Star, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 
-export default function CustomerReviews() {
-  const totalRatings = 500;
-
-  const ratingsArr = [
-    {
-      rating: 5,
-      reviews: 450,
-    },
-    {
-      rating: 4,
-      reviews: 40,
-    },
-    {
-      rating: 3,
-      reviews: 10,
-    },
-    {
-      rating: 2,
-      reviews: 0,
-    },
-    {
-      rating: 1,
-      reviews: 0,
-    },
-  ];
+export default function CustomerReviews({ productReviews, averageRating }) {
+  const ratingsArr = [5, 4, 3, 2, 1].map((rating) => ({
+    rating,
+    reviews: productReviews.filter((review) => review.rating === rating).length,
+  }));
 
   const ratingPercentage = (reviews) => {
-    if (totalRatings === 0) return 0;
+    if (productReviews.length === 0) return 0;
 
-    return (reviews / totalRatings) * 100;
+    return (reviews / productReviews.length) * 100;
   };
 
   return (
@@ -47,30 +27,29 @@ export default function CustomerReviews() {
       </header>
 
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className="flex flex-col gap-10 lg:w-1/2">
+        <div className="flex flex-col gap-10 lg:w-1/2 lg:max-w-75">
           <div className="flex flex-col gap-4">
             <p className="text-5xl font-bold text-[hsla(52,98%,53%,1)]">
-              4.8/5
+              {averageRating.toFixed(1)}/5
             </p>
             <div className="flex gap-2">
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
+              {[1, 2, 3, 4, 5].map((star) => {
+                return (
+                  <Star
+                    key={star}
+                    className={
+                      star <= averageRating
+                        ? "fill-[hsla(52,98%,53%,1)] text-[hsla(52,98%,53%,1)]"
+                        : "text-gray-400"
+                    }
+                  />
+                );
+              })}
             </div>
 
-            <p className="text-xl font-bold">500 verified ratings</p>
+            <p className="text-xl font-bold">
+              {productReviews.length} verified ratings
+            </p>
           </div>
 
           <ul className="flex flex-col gap-4">
@@ -99,59 +78,66 @@ export default function CustomerReviews() {
           </ul>
         </div>
 
-        <ul className="self-end flex flex-col gap-5">
-          <li className="flex flex-col gap-4 border border-[hsla(0,0%,20%,1)] p-4 rounded-2xl">
-            <div className="flex gap-2">
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-              <div className="text-[hsla(52,98%,53%,1)]">
-                <Star fill="hsla(52,98%,53%,1)" />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h2 className="text-2xl font-bold">The Fit & Silhouette</h2>
-              <p className="text-md leading-8">
-                The silhouette on this is crazy. The drop shoulder is perfectly
-                executed and the drape of the nylon gives it a very
-                architectural feel. Definitely size down if you don&apos;t want
-                it too oversized, but for me, the exaggerated fit is exactly
-                what I was looking for.
-              </p>
-              <div className="text-xs flex justify-between items-center font-bold">
-                <div className="flex items-center gap-5">
-                  <p>12-08-2026</p>
-                  <p>by @Tobi_V</p>
+        <ul className="w-full flex-1 self-end flex flex-col gap-5">
+          {productReviews.map((review) => {
+            return (
+              <li
+                key={review.id}
+                className="flex flex-col gap-4 border border-[hsla(0,0%,20%,1)] p-4 rounded-2xl"
+              >
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => {
+                    return (
+                      <Star
+                        key={star}
+                        className={
+                          star <= review.rating
+                            ? "fill-[hsla(52,98%,53%,1)] text-[hsla(52,98%,53%,1)]"
+                            : "text-gray-400"
+                        }
+                      />
+                    );
+                  })}
                 </div>
 
-                <p className="flex items-center gap-1">
-                  <ShieldCheck color="hsla(52,98%,53%,1)" />
-                  Verified Customer
-                </p>
-              </div>
-            </div>
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-2xl font-bold">{review.title}</h2>
+                  <p className="text-md leading-8">{review.comment}</p>
+                  <div className="text-xs flex justify-between items-center font-bold">
+                    <div className="flex items-center gap-5">
+                      <p>{review.date}</p>
+                      <p>by {review.customerUsername}</p>
+                    </div>
 
-            <ul className="pb-2 collections-scroll w-full flex justify-between gap-5 overflow-x-auto">
-              <li className="shrink-0 relative h-30 w-30 rounded-md overflow-hidden cursor-pointer">
-                <Image
-                  src="/home-1.png"
-                  fill
-                  alt="whatever"
-                  className="object-cover"
-                />
+                    <p className="flex items-center gap-1">
+                      <ShieldCheck color="hsla(52,98%,53%,1)" />
+                      Verified Customer
+                    </p>
+                  </div>
+                </div>
+
+                {review.images.length > 0 && (
+                  <ul className="pb-2 collections-scroll w-full flex gap-5 overflow-x-auto">
+                    {review.images.map((image, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="shrink-0 relative h-30 w-30 rounded-md overflow-hidden cursor-pointer"
+                        >
+                          <Image
+                            src={image}
+                            fill
+                            alt="review image"
+                            className="object-cover"
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
               </li>
-            </ul>
-          </li>
+            );
+          })}
         </ul>
       </div>
     </section>

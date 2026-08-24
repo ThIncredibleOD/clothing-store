@@ -16,14 +16,27 @@ export default function Product() {
     (review) => review.productId === Number(productId),
   );
 
+  const averageRating =
+    productReviews.length > 0
+      ? productReviews.reduce((sum, review) => sum + review.rating, 0) /
+        productReviews.length
+      : 0;
+
   return (
     <main>
-      <ProductInfo product={product} productReviews={productReviews} />
+      <ProductInfo
+        product={product}
+        productReviews={productReviews}
+        averageRating={averageRating}
+      />
       <CompleteTheFit />
       {product.contentBreakdown.length > 0 && (
         <ContentBreakdown product={product} />
       )}
-      <CustomerReviews />
+      <CustomerReviews
+        productReviews={productReviews}
+        averageRating={averageRating}
+      />
     </main>
   );
 }

@@ -13,7 +13,11 @@ import {
   ShoppingCart,
 } from "lucide-react";
 
-export default function ProductInfo({ product, productReviews }) {
+export default function ProductInfo({
+  product,
+  productReviews,
+  averageRating,
+}) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [favourite, setFavourite] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -21,14 +25,6 @@ export default function ProductInfo({ product, productReviews }) {
     null,
   );
   const stock = selectedVariation ? product.units[selectedVariation] : 0;
-
-  const averageRating =
-    productReviews.length > 0
-      ? Math.round(
-          productReviews.reduce((sum, review) => sum + review.rating, 0) /
-            productReviews.length,
-        )
-      : 0;
 
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % product.images.length);
