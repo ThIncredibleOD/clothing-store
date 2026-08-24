@@ -7,6 +7,16 @@ import { useState } from "react";
 export default function ProductsList() {
   const [quantity, setQuantity] = useState(1);
 
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  const handleIncreaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
   return (
     <section className="p-8 md:p-12 flex flex-col gap-10">
       <header className="flex items-baseline-last gap-4">
@@ -36,14 +46,14 @@ export default function ProductsList() {
             <div className="flex w-fit justify-between items-center gap-10">
               <button
                 className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
-                // onClick={handleDecreaseQuantity}
+                onClick={handleDecreaseQuantity}
               >
                 <Minus />
               </button>
               <p className="text-xl md:text-2xl font-bold">{quantity}</p>
               <button
                 className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
-                // onClick={handleIncreaseQuantity}
+                onClick={handleIncreaseQuantity}
               >
                 <Plus />
               </button>
