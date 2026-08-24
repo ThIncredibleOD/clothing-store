@@ -8,6 +8,7 @@ import { StoreProvider } from "@/context/StoreContext";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
 import { reviews } from "@/data/reviews";
+import { favourites } from "@/data/favourites";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <StoreProvider value={{ products, categories, reviews }}>
+        <StoreProvider value={{ products, categories, reviews, favourites }}>
           <Header />
           {children}
           <ScrollToTop />
