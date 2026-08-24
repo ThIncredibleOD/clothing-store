@@ -92,12 +92,18 @@ export default function Header() {
         </nav>
 
         <div className="text-white flex items-center gap-4 cursor-pointer">
-          <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer">
+          <Link
+            href="/#"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer"
+          >
             <UserRound size="20" />
-          </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer">
+          </Link>
+          <Link
+            href="/cart"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer"
+          >
             <ShoppingCart size="20" />
-          </button>
+          </Link>
           <button className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer">
             <Search size="20" />
           </button>

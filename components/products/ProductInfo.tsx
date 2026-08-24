@@ -75,7 +75,7 @@ export default function ProductInfo({
   }, [currentSlide]);
 
   return (
-    <section className="p-8 md:p-12 pt-30 md:pt-35 flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
+    <section className="p-8 md:p-12 flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
       <div className="md:flex-1 relative h-100 w-full md:h-100 md:w-100 lg:h-125 lg:w-125 shrink-0 flex items-center justify-center">
         <Image
           src={product.images[0]}

@@ -23,7 +23,7 @@ export default function Product() {
       : 0;
 
   return (
-    <main>
+    <main className="pt-30 md:pt-35">
       <ProductInfo
         product={product}
         productReviews={productReviews}
