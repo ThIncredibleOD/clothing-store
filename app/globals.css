@@ -3,6 +3,7 @@
 body {
   color: white;
   background-color: hsla(0, 0%, 7%, 1);
+  /* background-color: hsl(43, 49%, 90%); */
 }
 
 .collections-scroll::-webkit-scrollbar {

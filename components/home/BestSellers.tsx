@@ -2,8 +2,37 @@ import Image from "next/image";
 import { ShoppingCart, Flame } from "lucide-react";
 import Link from "next/link";
 
-export default function BestSellers({ products }) {
+export default function BestSellers({ products, setCart }) {
   const bestSellers = products.filter((product) => product.isBestSeller);
+
+  const handleAddToCart = (product, selectedSize, quantity) => {
+    setCart((currentCart) => {
+      const existingItem = currentCart.find(
+        (item) => item.id === product.id && item.size === selectedSize,
+      );
+
+      if (existingItem) {
+        return currentCart.map((item) =>
+          item.id === product.id && item.size === selectedSize
+            ? { ...item, quantity: item.quantity + quantity }
+            : item,
+        );
+      }
+
+      return [
+        ...currentCart,
+        {
+          id: product.id,
+          title: product.title,
+          brand: product.brand,
+          price: product.price,
+          images: product.images,
+          size: selectedSize,
+          quantity,
+        },
+      ];
+    });
+  };
 
   return (
     <section className="p-8 md:p-12 flex flex-col gap-10">
@@ -46,7 +75,10 @@ export default function BestSellers({ products }) {
             </Link>
             <div className="flex items-center justify-between">
               <p className="md:text-lg">${bestSeller.price}</p>
-              <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[hsla(0,0%,100%,0.4)] border-solid cursor-pointer">
+              <button
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[hsla(0,0%,100%,0.4)] border-solid cursor-pointer"
+                // onClick={() => handleAddToCart(products, )}
+              >
                 <ShoppingCart size="20" />
               </button>
             </div>
