@@ -23,7 +23,7 @@ export default function BestSellers({
       </header>
 
       <ul className="collections-scroll w-full flex justify-between gap-10 overflow-x-auto">
-        {bestSellers.map((bestSeller, index) => {
+        {bestSellers.map((bestSeller) => {
           const totalQuantity = cart
             .filter((item) => item.id === bestSeller.id)
             .reduce((total, item) => total + item.quantity, 0);
@@ -33,7 +33,7 @@ export default function BestSellers({
               key={bestSeller.id}
               className="relative flex w-75 shrink-0 flex-col justify-between gap-6"
             >
-              {displayVariation === index && (
+              {displayVariation === bestSeller.id && (
                 <ProductVariation
                   cart={cart}
                   setCart={setCart}
@@ -73,7 +73,7 @@ export default function BestSellers({
                 {cart.some((item) => item.id === bestSeller.id) ? (
                   <div className="flex w-fit items-center justify-between gap-4">
                     <button
-                      onClick={() => setDisplayVariation(index)}
+                      onClick={() => setDisplayVariation(bestSeller.id)}
                       className="flex h-8 w-8 items-center justify-center rounded-md border-2 border-[hsla(52,98%,53%,0.5)] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
                     >
                       <Minus size={18} />
@@ -85,7 +85,7 @@ export default function BestSellers({
 
                     <button
                       className="flex h-8 w-8 items-center justify-center rounded-md border-2 border-[hsla(52,98%,53%,0.5)] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
-                      onClick={() => setDisplayVariation(index)}
+                      onClick={() => setDisplayVariation(bestSeller.id)}
                     >
                       <Plus size={18} />
                     </button>
@@ -93,7 +93,7 @@ export default function BestSellers({
                 ) : (
                   <button
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-[hsla(0,0%,100%,0.4)] border-solid cursor-pointer"
-                    onClick={() => setDisplayVariation(index)}
+                    onClick={() => setDisplayVariation(bestSeller.id)}
                   >
                     <ShoppingCart size="20" />
                   </button>

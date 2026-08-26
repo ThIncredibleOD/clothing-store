@@ -6,9 +6,14 @@ import Categories from "@/components/home/Categories";
 import PromoBanner from "@/components/home/PromoBanner";
 import HeroSlideshow from "@/components/home/HeroSlideshow";
 import { useStore } from "@/context/StoreContext";
+import { useEffect } from "react";
 
 export default function Home() {
   const { products, categories, cart, setCart, handleAddToCart } = useStore();
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   return (
     <div>
@@ -21,7 +26,13 @@ export default function Home() {
           setCart={setCart}
           handleAddToCart={handleAddToCart}
         />
-        <Categories products={products} categories={categories} />
+        <Categories
+          products={products}
+          categories={categories}
+          cart={cart}
+          setCart={setCart}
+          handleAddToCart={handleAddToCart}
+        />
         <PromoBanner />
       </main>
     </div>
