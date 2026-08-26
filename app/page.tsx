@@ -6,21 +6,21 @@ import Categories from "@/components/home/Categories";
 import PromoBanner from "@/components/home/PromoBanner";
 import HeroSlideshow from "@/components/home/HeroSlideshow";
 import { useStore } from "@/context/StoreContext";
-import { useEffect } from "react";
 
 export default function Home() {
-  const { products, categories, cart, setCart } = useStore();
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  const { products, categories, cart, setCart, handleAddToCart } = useStore();
 
   return (
     <div>
       <main>
         <HeroSlideshow />
         <Collections />
-        <BestSellers products={products} setCart={setCart} />
+        <BestSellers
+          products={products}
+          cart={cart}
+          setCart={setCart}
+          handleAddToCart={handleAddToCart}
+        />
         <Categories products={products} categories={categories} />
         <PromoBanner />
       </main>
