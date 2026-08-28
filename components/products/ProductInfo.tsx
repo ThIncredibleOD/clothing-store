@@ -12,19 +12,27 @@ import {
   Ruler,
   ShoppingCart,
 } from "lucide-react";
+import ProductVariation from "../ui/ProductVariation";
+import { useStore } from "@/context/StoreContext";
 
 export default function ProductInfo({
   product,
   productReviews,
   averageRating,
 }) {
+  const { cart, setCart, handleAddToCart } = useStore();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [favourite, setFavourite] = useState(false);
-  const [quantity, setQuantity] = useState(1);
   const [selectedVariation, setSelectedVariation] = useState<string | null>(
     null,
   );
+  const [displayVariation, setDisplayVariation] = useState(null);
+
   const stock = selectedVariation ? product.units[selectedVariation] : 0;
+
+  const totalQuantity = cart
+    .filter((item) => item.id === product.id)
+    .reduce((total, item) => total + item.quantity, 0);
 
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % product.images.length);
@@ -40,25 +48,9 @@ export default function ProductInfo({
     setCurrentSlide(number);
   };
 
-  const handleDecreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
-
-  const handleIncreaseQuantity = () => {
-    if (quantity < stock) {
-      setQuantity((prev) => prev + 1);
-    }
-  };
-
   const handleSelectedVariation = (variation) => {
     setSelectedVariation(variation);
   };
-
-  useEffect(() => {
-    setQuantity(1);
-  }, [stock]);
 
   useEffect(() => {
     if (product.sizes) {
@@ -75,7 +67,17 @@ export default function ProductInfo({
   }, [currentSlide]);
 
   return (
-    <section className="p-8 md:p-12 flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
+    <section className="relative p-8 md:p-12 flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-12">
+      {displayVariation === product.id && (
+        <ProductVariation
+          cart={cart}
+          setCart={setCart}
+          product={product}
+          handleAddToCart={handleAddToCart}
+          setDisplayVariation={setDisplayVariation}
+        />
+      )}
+
       <div className="md:flex-1 relative h-100 w-full md:h-100 md:w-100 lg:h-125 lg:w-125 shrink-0 flex items-center justify-center">
         <Image
           src={product.images[0]}
@@ -169,21 +171,23 @@ export default function ProductInfo({
             <p>from {productReviews.length} verified customer(s)</p>
           </div>
 
-          <div className="flex w-fit justify-between items-center gap-10">
-            <button
-              className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
-              onClick={handleDecreaseQuantity}
-            >
-              <Minus />
-            </button>
-            <p className="text-xl md:text-2xl font-bold">{quantity}</p>
-            <button
-              className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
-              onClick={handleIncreaseQuantity}
-            >
-              <Plus />
-            </button>
-          </div>
+          {totalQuantity > 0 && (
+            <div className="flex w-fit justify-between items-center gap-10">
+              <button
+                className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
+                onClick={() => setDisplayVariation(product.id)}
+              >
+                <Minus />
+              </button>
+              <p className="text-xl md:text-2xl font-bold">{totalQuantity}</p>
+              <button
+                className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
+                onClick={() => setDisplayVariation(product.id)}
+              >
+                <Plus />
+              </button>
+            </div>
+          )}
 
           <hr className="border-t border-t-[hsla(52,98%,53%,1)]" />
 
@@ -211,10 +215,15 @@ export default function ProductInfo({
 
           <p>Available Units: {stock}</p>
 
-          <button className="flex items-center justify-center gap-2 bg-[hsla(52,98%,53%,1)] text-lg text-black font-bold py-4 rounded-md cursor-pointer">
-            <ShoppingCart fill="black" size="30" />
-            ADD TO CART
-          </button>
+          {totalQuantity === 0 && (
+            <button
+              className="flex items-center justify-center gap-2 bg-[hsla(52,98%,53%,1)] text-lg text-black font-bold py-4 rounded-md cursor-pointer"
+              onClick={() => setDisplayVariation(product.id)}
+            >
+              <ShoppingCart fill="black" size="30" />
+              ADD TO CART
+            </button>
+          )}
         </div>
       </div>
     </section>
