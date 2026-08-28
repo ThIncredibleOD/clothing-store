@@ -11,8 +11,11 @@ export default function Cart() {
 
   return (
     <main className="pt-30 md:pt-35">
-      <ProductsList />
-      <Summary />
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-10">
+        <ProductsList />
+        <Summary />
+      </div>
+
       <TrustBar />
       <WatchList products={products} favourites={favourites} />
     </main>

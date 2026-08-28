@@ -1,6 +1,6 @@
 export default function Summary() {
   return (
-    <section className="p-8 md:p-12">
+    <section className="md:flex-1 lg:max-w-150 p-8 md:p-12">
       <div className="flex flex-col gap-8 border border-[hsla(52,98%,53%,1)] p-4 rounded-2xl">
         <header>
           <h3 className="text-xl font-bold">SUMMARY</h3>
