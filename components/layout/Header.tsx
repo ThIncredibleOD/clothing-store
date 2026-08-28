@@ -5,8 +5,10 @@ import { ShoppingCart, Search, Menu, UserRound } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useStore } from "@/context/StoreContext";
 
 export default function Header() {
+  const { cart } = useStore();
   const [dark, setDark] = useState(false);
   const headerRef = useRef(null);
   const pathname = usePathname();
@@ -100,8 +102,14 @@ export default function Header() {
           </Link>
           <Link
             href="/cart"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer"
           >
+            {cart.length > 0 && (
+              <div className="absolute bg-[hsl(52,98%,53%)] text-black rounded-full px-1 -top-3 left-5">
+                {cart.length}
+              </div>
+            )}
+
             <ShoppingCart size="20" />
           </Link>
           <button className="flex h-10 w-10 items-center justify-center rounded-full border border-solid cursor-pointer">

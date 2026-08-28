@@ -5,13 +5,11 @@ import { ShoppingCart, Flame, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import ProductVariation from "../ui/ProductVariation";
 import { useState } from "react";
+import { useStore } from "@/context/StoreContext";
 
-export default function BestSellers({
-  products,
-  cart,
-  setCart,
-  handleAddToCart,
-}) {
+export default function BestSellers() {
+  const { products, cart, setCart, handleAddToCart } = useStore();
+
   const bestSellers = products.filter((product) => product.isBestSeller);
   const [displayVariation, setDisplayVariation] = useState(null);
 

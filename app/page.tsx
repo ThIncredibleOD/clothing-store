@@ -11,28 +11,17 @@ import { useEffect } from "react";
 export default function Home() {
   const { products, categories, cart, setCart, handleAddToCart } = useStore();
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  // useEffect(() => {
+  //   console.log(cart);
+  // }, [cart]);
 
   return (
     <div>
       <main>
         <HeroSlideshow />
         <Collections />
-        <BestSellers
-          products={products}
-          cart={cart}
-          setCart={setCart}
-          handleAddToCart={handleAddToCart}
-        />
-        <Categories
-          products={products}
-          categories={categories}
-          cart={cart}
-          setCart={setCart}
-          handleAddToCart={handleAddToCart}
-        />
+        <BestSellers />
+        <Categories />
         <PromoBanner />
       </main>
     </div>

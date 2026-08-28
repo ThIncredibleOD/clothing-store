@@ -5,14 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import ProductVariation from "../ui/ProductVariation";
+import { useStore } from "@/context/StoreContext";
 
-export default function Categories({
-  products,
-  categories,
-  cart,
-  setCart,
-  handleAddToCart,
-}) {
+export default function Categories() {
+  const { products, categories, cart, setCart, handleAddToCart } = useStore();
+
   const [displayVariation, setDisplayVariation] = useState(null);
 
   return (
