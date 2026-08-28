@@ -9,11 +9,11 @@ import { useStore } from "@/context/StoreContext";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { products, categories, cart, setCart, handleAddToCart } = useStore();
+  const { cart } = useStore();
 
-  // useEffect(() => {
-  //   console.log(cart);
-  // }, [cart]);
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   return (
     <div>

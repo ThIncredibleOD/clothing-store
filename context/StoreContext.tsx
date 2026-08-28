@@ -16,6 +16,7 @@ export function StoreProvider({ children, value }) {
         brand: product.brand,
         price: product.price,
         images: product.images,
+        alt: product.alt,
         size,
         quantity,
       }));
@@ -39,8 +40,16 @@ export function StoreProvider({ children, value }) {
     });
   };
 
+  const handleRemoveFromCart = (productId, size) => {
+    setCart((prevCart) =>
+      prevCart.filter((item) => !(item.id === productId && item.size === size)),
+    );
+  };
+
   return (
-    <StoreContext.Provider value={{ ...value, cart, setCart, handleAddToCart }}>
+    <StoreContext.Provider
+      value={{ ...value, cart, setCart, handleAddToCart, handleRemoveFromCart }}
+    >
       {children}
     </StoreContext.Provider>
   );

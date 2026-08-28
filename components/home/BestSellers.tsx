@@ -9,9 +9,9 @@ import { useStore } from "@/context/StoreContext";
 
 export default function BestSellers() {
   const { products, cart, setCart, handleAddToCart } = useStore();
+  const [displayVariation, setDisplayVariation] = useState(null);
 
   const bestSellers = products.filter((product) => product.isBestSeller);
-  const [displayVariation, setDisplayVariation] = useState(null);
 
   return (
     <section className="p-8 md:p-12 flex flex-col gap-10">
