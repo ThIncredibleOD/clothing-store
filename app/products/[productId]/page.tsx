@@ -29,7 +29,7 @@ export default function Product() {
         productReviews={productReviews}
         averageRating={averageRating}
       />
-      <CompleteTheFit />
+      <CompleteTheFit product={product} />
       {product.contentBreakdown.length > 0 && (
         <ContentBreakdown product={product} />
       )}
