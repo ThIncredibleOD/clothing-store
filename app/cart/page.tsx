@@ -1,7 +1,7 @@
 "use client";
 
 import ProductsList from "@/components/cart/ProductsList";
-import Summary from "@/components/cart/Summary";
+import Summary from "@/components/ui/Summary";
 import TrustBar from "@/components/cart/TrustBar";
 import WatchList from "@/components/cart/WatchList";
 import { useStore } from "@/context/StoreContext";
