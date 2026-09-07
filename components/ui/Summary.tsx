@@ -1,7 +1,13 @@
+"use client";
+
 import { useStore } from "@/context/StoreContext";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Summary() {
   const { cart } = useStore();
+
+  const pathname = usePathname();
+  const router = useRouter();
 
   const cartTotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -9,6 +15,13 @@ export default function Summary() {
   );
   const deliveryFees = 5;
   const total = cartTotal + deliveryFees;
+
+  const handleNextRoute = (path) => {
+    if (path === "/cart") {
+      router.push("/shipping-address");
+      return;
+    }
+  };
 
   return (
     <section className="md:flex-1 lg:max-w-150 p-8 md:p-12">
@@ -33,8 +46,11 @@ export default function Summary() {
           <p>${total}</p>
         </div>
 
-        <button className="text-xl font-bold bg-[hsla(52,98%,53%,1)] text-black p-4 rounded-md cursor-pointer">
-          CHECKOUT (${total})
+        <button
+          className="text-xl font-bold bg-[hsla(52,98%,53%,1)] text-black p-4 rounded-md cursor-pointer"
+          onClick={() => handleNextRoute(pathname)}
+        >
+          {pathname === "/cart" ? "CHECKOUT" : "PLACE ORDER"} (${total})
         </button>
       </div>
     </section>
