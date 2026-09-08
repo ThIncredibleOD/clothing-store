@@ -2,18 +2,17 @@
 
 import { useAddress } from "@/context/AddressContext";
 import { Info, MoveRight } from "lucide-react";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddressForm() {
   const { shippingAddress, updateShippingAddress } = useAddress();
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
 
-  useEffect(() => {
-    console.log(shippingAddress);
-  }, [shippingAddress]);
+    router.push("/checkout/confirmation");
+  };
 
   return (
     <section className="h-[calc(100vh-7.5rem)] md:h-[calc(100vh-8.75rem) md:flex-1 p-8 md:p-12 flex flex-col gap-10">
