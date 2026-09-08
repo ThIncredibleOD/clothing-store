@@ -9,7 +9,7 @@ export default function AddressConfirmation() {
 
   return (
     <section className="md:flex-1 p-8 md:p-12 flex flex-col gap-10">
-      <h1 className="text-3xl font-bold">Shipping Address</h1>
+      <h1 className="text-3xl font-bold">SHIPPING ADDRESS</h1>
 
       <div className="flex flex-col gap-4 border border-[hsla(52,98%,53%,1)] p-4 rounded-2xl">
         <Link
