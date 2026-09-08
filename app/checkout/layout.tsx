@@ -1,25 +1,32 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import Summary from "@/components/ui/Summary";
 import { AddressProvider } from "@/context/AddressContext";
+import { usePathname } from "next/navigation";
 
 export default function CheckoutLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
     <AddressProvider>
       <main className="pt-30 md:pt-35 flex flex-col lg:flex-row lg:justify-between lg:gap-10">
         {children}
         <div>
-          <Link
-            href="/cart"
-            className="text-[hsla(52,98%,53%,1)] flex items-center gap-2 p-8 md:p-12 cursor-pointer"
-          >
-            <ChevronLeft />
-            Return to Cart
-          </Link>
+          {pathname !== "/checkout/confirmation" && (
+            <Link
+              href="/cart"
+              className="text-[hsla(52,98%,53%,1)] flex items-center gap-2 p-8 md:p-12 cursor-pointer"
+            >
+              <ChevronLeft />
+              Return to Cart
+            </Link>
+          )}
 
           <Summary />
 

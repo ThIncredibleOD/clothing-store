@@ -54,6 +54,15 @@ export default function Summary() {
             CHECKOUT (${total})
           </button>
         )}
+
+        {pathname === "/checkout/confirmation" && (
+          <button
+            className="text-xl font-bold bg-[hsla(52,98%,53%,1)] text-black p-4 rounded-md cursor-pointer"
+            onClick={() => handleNextRoute(pathname)}
+          >
+            PLACE ORDER (${total})
+          </button>
+        )}
       </div>
     </section>
   );
