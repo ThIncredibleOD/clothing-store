@@ -46,12 +46,14 @@ export default function Summary() {
           <p>${total}</p>
         </div>
 
-        <button
-          className="text-xl font-bold bg-[hsla(52,98%,53%,1)] text-black p-4 rounded-md cursor-pointer"
-          onClick={() => handleNextRoute(pathname)}
-        >
-          {pathname === "/cart" ? "CHECKOUT" : "PLACE ORDER"} (${total})
-        </button>
+        {pathname === "/cart" && (
+          <button
+            className="text-xl font-bold bg-[hsla(52,98%,53%,1)] text-black p-4 rounded-md cursor-pointer"
+            onClick={() => handleNextRoute(pathname)}
+          >
+            CHECKOUT (${total})
+          </button>
+        )}
       </div>
     </section>
   );
