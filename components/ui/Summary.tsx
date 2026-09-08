@@ -18,7 +18,7 @@ export default function Summary() {
 
   const handleNextRoute = (path) => {
     if (path === "/cart") {
-      router.push("/shipping-address");
+      router.push("/checkout/shipping-address");
       return;
     }
   };
