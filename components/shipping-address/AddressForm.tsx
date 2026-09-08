@@ -1,11 +1,19 @@
 "use client";
 
+import { useAddress } from "@/context/AddressContext";
 import { Info, MoveRight } from "lucide-react";
+import { useEffect } from "react";
 
 export default function AddressForm() {
+  const { shippingAddress, updateShippingAddress } = useAddress();
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    console.log(shippingAddress);
+  }, [shippingAddress]);
 
   return (
     <section className="h-[calc(100vh-7.5rem)] md:h-[calc(100vh-8.75rem) md:flex-1 p-8 md:p-12 flex flex-col gap-10">
@@ -17,11 +25,15 @@ export default function AddressForm() {
             type="text"
             placeholder="First Name"
             className="flex-1 border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+            value={shippingAddress.firstName}
+            onChange={(e) => updateShippingAddress("firstName", e.target.value)}
           />
           <input
             type="text"
             placeholder="Last Name"
             className="flex-1 border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+            value={shippingAddress.lastName}
+            onChange={(e) => updateShippingAddress("lastName", e.target.value)}
           />
         </div>
 
@@ -29,12 +41,16 @@ export default function AddressForm() {
           type="email"
           placeholder="Email Address"
           className="border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+          value={shippingAddress.email}
+          onChange={(e) => updateShippingAddress("email", e.target.value)}
         />
 
         <input
           type="text"
           placeholder="State/Province"
           className="border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+          value={shippingAddress.state}
+          onChange={(e) => updateShippingAddress("state", e.target.value)}
         />
 
         <div className="flex gap-20">
@@ -42,12 +58,16 @@ export default function AddressForm() {
             type="text"
             placeholder="City"
             className="min-w-0 flex-1 border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+            value={shippingAddress.city}
+            onChange={(e) => updateShippingAddress("city", e.target.value)}
           />
 
           <input
             type="text"
             placeholder="District"
             className="min-w-0 flex-1 border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+            value={shippingAddress.district}
+            onChange={(e) => updateShippingAddress("district", e.target.value)}
           />
         </div>
 
@@ -55,12 +75,18 @@ export default function AddressForm() {
           type="text"
           placeholder="Full Street Address"
           className="border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+          value={shippingAddress.streetAddress}
+          onChange={(e) =>
+            updateShippingAddress("streetAddress", e.target.value)
+          }
         />
 
         <input
           type="number"
           placeholder="Phone Number"
           className="border-b border-[hsla(0,0%,100%,0.4)] px-2 pb-4 outline-none"
+          value={shippingAddress.phone}
+          onChange={(e) => updateShippingAddress("phone", e.target.value)}
         />
 
         <p className="text-[hsla(0,0%,100%,0.4)] flex items-center gap-2">
