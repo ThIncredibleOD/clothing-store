@@ -86,7 +86,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-10 p-5 text-black"
+      className="fixed top-0 left-0 right-0 p-5 text-black z-1000"
     >
       <div
         className={`${dark ? "bg-black/10" : "bg-white/30"} backdrop-blur-md w-full flex items-center justify-between pr-5 rounded-full shadow-[0_5px_4px_hsla(0,0%,0%,0.25)] relative`}
