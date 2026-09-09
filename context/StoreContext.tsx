@@ -1,14 +1,76 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from "react";
 
-const StoreContext = createContext(null);
+type CartItem = {
+  id: number;
+  title: string;
+  brand: string;
+  price: number;
+  images: string[];
+  alt: string;
+  size: string;
+  quantity: number;
+};
 
-export function StoreProvider({ children, value }) {
-  const [cart, setCart] = useState([]);
+type Product = {
+  id: number;
+  title: string;
+  brand: string;
+  price: number;
+  images: string[];
+  alt: string;
+  sizes: string[];
+  units: Record<string, number>;
+  trending?: boolean;
+  isBestSeller?: boolean;
+  isNewArrival?: boolean;
+  category: string;
+  contentBreakdown?: Record<string, string | number>;
+};
 
-  const handleAddToCart = (product, quantities) => {
-    const selectedItems = Object.entries(quantities)
+type StoreContextType = {
+  products: Product[];
+  categories: any[];
+  reviews: any[];
+
+  cart: CartItem[];
+  setCart: Dispatch<SetStateAction<CartItem[]>>;
+
+  handleAddToCart: (
+    product: Product,
+    quantities: Record<string, number>,
+  ) => void;
+
+  handleRemoveFromCart: (productId: number, size: string) => void;
+};
+
+const StoreContext = createContext<StoreContextType | undefined>(undefined);
+
+type StoreProviderProps = {
+  children: ReactNode;
+  value: {
+    products: Product[];
+    categories: any[];
+    reviews: any[];
+  };
+};
+
+export function StoreProvider({ children, value }: StoreProviderProps) {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const handleAddToCart = (
+    product: Product,
+    quantities: Record<string, number>,
+  ) => {
+    const selectedItems: CartItem[] = Object.entries(quantities)
       .filter(([_, quantity]) => quantity > 0)
       .map(([size, quantity]) => ({
         id: product.id,
@@ -40,7 +102,7 @@ export function StoreProvider({ children, value }) {
     });
   };
 
-  const handleRemoveFromCart = (productId, size) => {
+  const handleRemoveFromCart = (productId: number, size: string) => {
     setCart((prevCart) =>
       prevCart.filter((item) => !(item.id === productId && item.size === size)),
     );
@@ -48,14 +110,20 @@ export function StoreProvider({ children, value }) {
 
   return (
     <StoreContext.Provider
-      value={{ ...value, cart, setCart, handleAddToCart, handleRemoveFromCart }}
+      value={{
+        ...value,
+        cart,
+        setCart,
+        handleAddToCart,
+        handleRemoveFromCart,
+      }}
     >
       {children}
     </StoreContext.Provider>
   );
 }
 
-export function useStore() {
+export function useStore(): StoreContextType {
   const context = useContext(StoreContext);
 
   if (!context) {

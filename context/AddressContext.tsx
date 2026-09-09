@@ -1,11 +1,35 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  type ReactNode,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 
-const AddressContext = createContext(null);
+type ShippingAddress = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  state: string;
+  city: string;
+  district: string;
+  streetAddress: string;
+  phone: string;
+};
 
-export function AddressProvider({ children }: { children: React.ReactNode }) {
-  const [shippingAddress, setShippingAddress] = useState({
+type AddressContextType = {
+  shippingAddress: ShippingAddress;
+  setShippingAddress: Dispatch<SetStateAction<ShippingAddress>>;
+  updateShippingAddress: (field: keyof ShippingAddress, value: string) => void;
+};
+
+const AddressContext = createContext<AddressContextType | undefined>(undefined);
+
+export function AddressProvider({ children }: { children: ReactNode }) {
+  const [shippingAddress, setShippingAddress] = useState<ShippingAddress>({
     firstName: "",
     lastName: "",
     email: "",
@@ -17,7 +41,7 @@ export function AddressProvider({ children }: { children: React.ReactNode }) {
   });
 
   const updateShippingAddress = (
-    field: keyof typeof shippingAddress,
+    field: keyof ShippingAddress,
     value: string,
   ) => {
     setShippingAddress((prev) => ({
@@ -39,11 +63,11 @@ export function AddressProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useAddress() {
+export function useAddress(): AddressContextType {
   const context = useContext(AddressContext);
 
   if (!context) {
-    throw new Error("useStore must be used inside StoreProvider");
+    throw new Error("useAddress must be used inside AddressProvider");
   }
 
   return context;
