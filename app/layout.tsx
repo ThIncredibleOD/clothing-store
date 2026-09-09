@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HuCollectives",
+  title: "HuCollectives Store",
   description: "A Clothing Store",
 };
 
