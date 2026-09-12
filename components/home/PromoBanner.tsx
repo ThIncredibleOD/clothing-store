@@ -3,7 +3,7 @@ import { MoveRight } from "lucide-react";
 export default function PromoBanner() {
   return (
     <section className="flex flex-col gap-8 md:gap-12 px-4 py-10 border-solid border-t border-b border-t-[hsla(0,0%,100%,0.4)] border-b-[hsla(0,0%,100%,0.4)]">
-      <h2 className="text-5xl md:text-8xl font-bold">
+      <h2 className="font-syne text-5xl md:text-8xl font-bold">
         UNLOCK <span className="text-4xl">10%</span> OFF
       </h2>
       <p className="text-[hsla(0,0%,100%,0.8)] md:text-xl">
@@ -27,7 +27,7 @@ export default function PromoBanner() {
 
         <button
           type="submit"
-          className="flex items-center gap-4 w-fit bg-[hsla(52,98%,53%,1)] text-black p-6 text-xl font-bold cursor-pointer"
+          className="font-syne flex items-center gap-4 w-fit bg-[hsla(52,98%,53%,1)] text-black p-6 text-xl font-bold cursor-pointer"
         >
           UNLOCK ACCESS
           <MoveRight strokeWidth="2.5" />

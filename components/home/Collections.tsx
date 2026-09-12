@@ -57,10 +57,10 @@ export default function Collections() {
 
                 <div className="flex flex-col gap-4">
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-bold">
+                    <h2 className="font-syne text-3xl md:text-4xl font-bold">
                       {collection.title}
                     </h2>
-                    <p className="text-[hsla(52,98%,53%,1)] text-2xl md:text-3xl">
+                    <p className="font-syne text-[hsla(52,98%,53%,1)] text-2xl md:text-3xl">
                       {" "}
                       Collection
                     </p>

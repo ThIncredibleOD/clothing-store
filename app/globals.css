@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.font-syne {
+  font-family: var(--font-syne);
+}
+
 body {
   color: white;
   background-color: hsla(0, 0%, 7%, 1);

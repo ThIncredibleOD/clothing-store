@@ -27,8 +27,10 @@ export default function Categories() {
             >
               <div className="flex md:hidden items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <h2 className="text-3xl font-bold">{category.title}</h2>
-                  <p className="text-[hsla(52,98%,53%,1)] text-3xl">
+                  <h2 className="font-syne text-3xl font-bold">
+                    {category.title}
+                  </h2>
+                  <p className="font-syne text-[hsla(52,98%,53%,1)] text-3xl">
                     Categories
                   </p>
                 </div>
@@ -54,8 +56,10 @@ export default function Categories() {
               <div className="md:flex md:flex-col md:gap-8 md:flex-1 md:min-w-0">
                 <div className="hidden md:flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-3xl font-bold">{category.title}</h2>
-                    <p className="text-[hsla(52,98%,53%,1)] text-3xl">
+                    <h2 className="font-syne text-3xl font-bold">
+                      {category.title}
+                    </h2>
+                    <p className="font-syne text-[hsla(52,98%,53%,1)] text-3xl">
                       Categories
                     </p>
                   </div>
@@ -112,10 +116,12 @@ export default function Categories() {
                             />
                           </div>
 
-                          <h3 className="text-xl font-bold">{product.title}</h3>
+                          <h3 className="font-syne text-xl font-bold">
+                            {product.title}
+                          </h3>
                         </Link>
                         <div className="flex items-center justify-between">
-                          <p>${product.price}</p>
+                          <p className="font-syne">${product.price}</p>
                           {cart.some((item) => item.id === product.id) ? (
                             <div className="flex w-fit items-center justify-between gap-4">
                               <button

@@ -17,7 +17,7 @@ export default function BestSellers() {
     <section className="p-8 md:p-12 flex flex-col gap-10">
       <header className="flex items-baseline-last gap-4">
         <div className="bg-[hsla(52,98%,53%,1)] h-5 w-5 rounded-full"></div>
-        <h2 className="text-3xl font-bold">BEST SELLERS</h2>
+        <h2 className="font-syne text-3xl font-bold">BEST SELLERS</h2>
       </header>
 
       <ul className="collections-scroll w-full flex justify-between gap-10 overflow-x-auto">
@@ -62,12 +62,12 @@ export default function BestSellers() {
                   />
                 </div>
 
-                <h3 className="text-xl md:text-2xl font-bold">
+                <h3 className="font-syne text-xl md:text-2xl font-bold">
                   {bestSeller.title}
                 </h3>
               </Link>
               <div className="flex items-center justify-between">
-                <p className="md:text-lg">${bestSeller.price}</p>
+                <p className="font-syne md:text-lg">${bestSeller.price}</p>
                 {cart.some((item) => item.id === bestSeller.id) ? (
                   <div className="flex w-fit items-center justify-between gap-4">
                     <button
