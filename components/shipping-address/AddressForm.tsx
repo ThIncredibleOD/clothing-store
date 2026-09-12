@@ -16,7 +16,7 @@ export default function AddressForm() {
 
   return (
     <section className=" md:flex-1 p-8 md:p-12 flex flex-col gap-10">
-      <h1 className="text-3xl font-bold">Shipping Address</h1>
+      <h1 className="font-syne text-3xl font-bold">Shipping Address</h1>
 
       <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row gap-10 md:gap-20 justify-between">

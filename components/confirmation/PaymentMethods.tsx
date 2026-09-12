@@ -36,7 +36,7 @@ export default function PaymentMethods() {
 
   return (
     <section className="flex flex-col gap-10 p-8 md:flex-1 md:p-12">
-      <h1 className="text-3xl font-bold">PAYMENT METHODS</h1>
+      <h1 className="font-syne text-3xl font-bold">PAYMENT METHODS</h1>
 
       <ul className="flex flex-col gap-4">
         {paymentMethods.map((method) => {
