@@ -8,13 +8,17 @@ import { useStore } from "@/context/StoreContext";
 import { useParams } from "next/navigation";
 
 export default function Product() {
-  const { products, reviews } = useStore();
+  const { products, reviews, completeTheFit } = useStore();
   const { productId } = useParams();
 
   const product = products.find((product) => product.id === Number(productId));
   const productReviews = reviews.filter(
     (review) => review.productId === Number(productId),
   );
+
+  const recommendedProducts = (completeTheFit[product.id] ?? [])
+    .map((id) => products.find((item) => item.id === Number(id)))
+    .filter(Boolean);
 
   const averageRating =
     productReviews.length > 0
@@ -29,7 +33,11 @@ export default function Product() {
         productReviews={productReviews}
         averageRating={averageRating}
       />
-      <CompleteTheFit product={product} />
+
+      {recommendedProducts.length > 0 && (
+        <CompleteTheFit products={recommendedProducts} />
+      )}
+
       {product.contentBreakdown.length > 0 && (
         <ContentBreakdown product={product} />
       )}

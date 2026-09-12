@@ -1,76 +1,14 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-} from "react";
+import { createContext, useContext, useState } from "react";
 
-type CartItem = {
-  id: number;
-  title: string;
-  brand: string;
-  price: number;
-  images: string[];
-  alt: string;
-  size: string;
-  quantity: number;
-};
+const StoreContext = createContext(null);
 
-type Product = {
-  id: number;
-  title: string;
-  brand: string;
-  price: number;
-  images: string[];
-  alt: string;
-  sizes: string[];
-  units: Record<string, number>;
-  trending?: boolean;
-  isBestSeller?: boolean;
-  isNewArrival?: boolean;
-  category: string;
-  contentBreakdown?: Record<string, string | number>;
-};
+export function StoreProvider({ children, value }) {
+  const [cart, setCart] = useState([]);
 
-type StoreContextType = {
-  products: Product[];
-  categories: any[];
-  reviews: any[];
-
-  cart: CartItem[];
-  setCart: Dispatch<SetStateAction<CartItem[]>>;
-
-  handleAddToCart: (
-    product: Product,
-    quantities: Record<string, number>,
-  ) => void;
-
-  handleRemoveFromCart: (productId: number, size: string) => void;
-};
-
-const StoreContext = createContext<StoreContextType | undefined>(undefined);
-
-type StoreProviderProps = {
-  children: ReactNode;
-  value: {
-    products: Product[];
-    categories: any[];
-    reviews: any[];
-  };
-};
-
-export function StoreProvider({ children, value }: StoreProviderProps) {
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  const handleAddToCart = (
-    product: Product,
-    quantities: Record<string, number>,
-  ) => {
-    const selectedItems: CartItem[] = Object.entries(quantities)
+  const handleAddToCart = (product, quantities) => {
+    const selectedItems = Object.entries(quantities)
       .filter(([_, quantity]) => quantity > 0)
       .map(([size, quantity]) => ({
         id: product.id,
@@ -102,7 +40,7 @@ export function StoreProvider({ children, value }: StoreProviderProps) {
     });
   };
 
-  const handleRemoveFromCart = (productId: number, size: string) => {
+  const handleRemoveFromCart = (productId, size) => {
     setCart((prevCart) =>
       prevCart.filter((item) => !(item.id === productId && item.size === size)),
     );
@@ -110,20 +48,14 @@ export function StoreProvider({ children, value }: StoreProviderProps) {
 
   return (
     <StoreContext.Provider
-      value={{
-        ...value,
-        cart,
-        setCart,
-        handleAddToCart,
-        handleRemoveFromCart,
-      }}
+      value={{ ...value, cart, setCart, handleAddToCart, handleRemoveFromCart }}
     >
       {children}
     </StoreContext.Provider>
   );
 }
 
-export function useStore(): StoreContextType {
+export function useStore() {
   const context = useContext(StoreContext);
 
   if (!context) {

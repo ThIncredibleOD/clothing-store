@@ -5,14 +5,9 @@ import { useStore } from "@/context/StoreContext";
 import { useState } from "react";
 import ProductVariation from "../ui/ProductVariation";
 
-export default function CompleteTheFit({ product }) {
-  const { cart, setCart, handleAddToCart, products, completeTheFit } =
-    useStore();
+export default function CompleteTheFit({ products }) {
+  const { cart, setCart, handleAddToCart } = useStore();
   const [displayVariation, setDisplayVariation] = useState(null);
-
-  const recommendedProducts = completeTheFit[product.id]
-    .map((id) => products.find((item) => item.id === id))
-    .filter(Boolean);
 
   return (
     <section className="p-8 md:p-12 flex flex-col gap-10">
@@ -22,7 +17,7 @@ export default function CompleteTheFit({ product }) {
       </header>
 
       <ul className="collections-scroll w-full flex justify-between gap-10 overflow-x-auto bg-re">
-        {recommendedProducts.map((recommendedItem) => {
+        {products.map((recommendedItem) => {
           const totalQuantity = cart
             .filter((item) => item.id === recommendedItem.id)
             .reduce((total, item) => total + item.quantity, 0);
