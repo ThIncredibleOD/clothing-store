@@ -18,7 +18,7 @@ export default function CustomerReviews({ productReviews, averageRating }) {
       <header className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="bg-[hsla(52,98%,53%,1)] h-5 w-5 rounded-full"></div>
-          <h2 className="text-3xl font-bold">CUSTOMER REVIEWS</h2>
+          <h2 className="font-syne text-3xl font-bold">CUSTOMER REVIEWS</h2>
         </div>
         <button className="flex items-center gap-1 text-xl text-[hsla(52,98%,53%,1)] cursor-pointer">
           See more
@@ -29,7 +29,7 @@ export default function CustomerReviews({ productReviews, averageRating }) {
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="flex flex-col gap-10 lg:w-1/2 lg:max-w-75">
           <div className="flex flex-col gap-4">
-            <p className="text-5xl font-bold text-[hsla(52,98%,53%,1)]">
+            <p className="font-syne text-5xl font-bold text-[hsla(52,98%,53%,1)]">
               {averageRating.toFixed(1)}/5
             </p>
             <div className="flex gap-2">
@@ -47,12 +47,12 @@ export default function CustomerReviews({ productReviews, averageRating }) {
               })}
             </div>
 
-            <p className="text-xl font-bold">
+            <p className="font-syne text-xl font-bold">
               {productReviews.length} verified ratings
             </p>
           </div>
 
-          <ul className="flex flex-col gap-4">
+          <ul className="font-syne flex flex-col gap-4">
             {ratingsArr.map((item, index) => {
               return (
                 <li
@@ -101,7 +101,9 @@ export default function CustomerReviews({ productReviews, averageRating }) {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-2xl font-bold">{review.title}</h2>
+                  <h2 className="font-syne text-2xl font-bold">
+                    {review.title}
+                  </h2>
                   <p className="text-md leading-8">{review.comment}</p>
                   <div className="text-xs flex justify-between items-center font-bold">
                     <div className="flex items-center gap-5">

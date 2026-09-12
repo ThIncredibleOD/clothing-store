@@ -18,7 +18,7 @@ export default function ContentBreakdown({ product }) {
     <section className="p-8 md:p-12 flex flex-col gap-10">
       <header className="flex items-baseline-last gap-4">
         <div className="bg-[hsla(52,98%,53%,1)] h-5 w-5 rounded-full"></div>
-        <h2 className="text-3xl font-bold">CONTENT BREAKDOWN</h2>
+        <h2 className="font-syne text-3xl font-bold">CONTENT BREAKDOWN</h2>
       </header>
 
       <ul className="flex flex-col gap-4">
@@ -30,7 +30,7 @@ export default function ContentBreakdown({ product }) {
               onClick={() => handleOpenContent(item.id)}
             >
               <div className="flex-1 flex justify-between items-center">
-                <p className="text-xl">{item.title}</p>
+                <p className="font-syne text-xl">{item.title}</p>
                 <button
                   className="bg-[hsla(52,98%,53%,1)] text-black p-2 rounded-sm cursor-pointer"
                   onClick={() => handleOpenContent(item.id)}

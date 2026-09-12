@@ -124,7 +124,7 @@ export default function ProductInfo({
       <div className="w-full md:flex-1 lg:max-w-150">
         <div className="flex flex-col gap-4">
           <div className="flex-1 flex justify-between items-center">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">
+            <h2 className="font-syne text-xl md:text-2xl lg:text-3xl font-bold">
               {product.title}
             </h2>
             <div
@@ -146,7 +146,9 @@ export default function ProductInfo({
 
           <hr className="border-t border-t-[hsla(52,98%,53%,1)]" />
           <div>
-            <p className="text-3xl md:text-4xl font-bold">${product.price}</p>
+            <p className="font-syne text-3xl md:text-4xl font-bold">
+              ${product.price}
+            </p>
           </div>
         </div>
 
@@ -192,7 +194,7 @@ export default function ProductInfo({
           <hr className="border-t border-t-[hsla(52,98%,53%,1)]" />
 
           <div className="flex justify-between items-center">
-            <p className="text-xl font-bold">Variation Available</p>
+            <p className="font-syne text-xl font-bold">Variation Available</p>
             <div className="flex items-center gap-4 text-[hsla(52,98%,53%,1)]">
               <p>Sizing Guide</p>
               <Ruler />
