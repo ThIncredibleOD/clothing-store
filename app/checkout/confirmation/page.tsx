@@ -1,6 +1,6 @@
-import AddressConfirmation from "@/components/Confirmation/AddressConfirmation";
-import PaymentMethods from "@/components/Confirmation/PaymentMethods";
-import ShippingMethod from "@/components/Confirmation/ShippingMethod";
+import AddressConfirmation from "@/components/confirmation/AddressConfirmation";
+import PaymentMethods from "@/components/confirmation/PaymentMethods";
+import ShippingMethod from "@/components/confirmation/ShippingMethod";
 import { ShieldCheck } from "lucide-react";
 
 export default function Confirmation() {

@@ -15,7 +15,7 @@ export default function AddressForm() {
   };
 
   return (
-    <section className="h-[calc(100vh-7.5rem)] md:h-[calc(100vh-8.75rem) md:flex-1 p-8 md:p-12 flex flex-col gap-10">
+    <section className=" md:flex-1 p-8 md:p-12 flex flex-col gap-10">
       <h1 className="text-3xl font-bold">Shipping Address</h1>
 
       <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
