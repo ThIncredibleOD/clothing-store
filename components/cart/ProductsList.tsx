@@ -37,7 +37,7 @@ export default function ProductsList() {
     <section className="md:flex-1 p-8 md:p-12 flex flex-col gap-10">
       <header className="flex items-baseline-last gap-4">
         <div className="bg-[hsla(52,98%,53%,1)] h-5 w-5 rounded-full" />
-        <h2 className="text-3xl font-bold">CART({cart.length})</h2>
+        <h2 className="font-syne text-3xl font-bold">CART({cart.length})</h2>
       </header>
 
       <ul className="flex flex-col gap-10">
@@ -57,7 +57,7 @@ export default function ProductsList() {
 
             <div className="md:flex-1 flex flex-col gap-4">
               <div className="flex  items-center justify-between">
-                <h2 className="text-xl md:text-3xl font-bold">
+                <h2 className="font-syne text-xl md:text-3xl font-bold">
                   {product.title}
                 </h2>
 
@@ -69,10 +69,15 @@ export default function ProductsList() {
                 </button>
               </div>
 
-              <p className="flex-1 text-3xl font-bold">${product.price}</p>
+              <p className="font-syne flex-1 text-3xl font-bold">
+                ${product.price}
+              </p>
 
               <p>
-                Size: <span className="text-xl font-bold">{product.size}</span>
+                Size:{" "}
+                <span className="font-syne text-xl font-bold">
+                  {product.size}
+                </span>
               </p>
 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -89,7 +94,7 @@ export default function ProductsList() {
                       <Minus />
                     </button>
 
-                    <p className="text-xl md:text-2xl font-bold">
+                    <p className="font-syne text-xl md:text-2xl font-bold">
                       {product.quantity}
                     </p>
 

@@ -181,7 +181,9 @@ export default function ProductInfo({
               >
                 <Minus />
               </button>
-              <p className="text-xl md:text-2xl font-bold">{totalQuantity}</p>
+              <p className="font-syne text-xl md:text-2xl font-bold">
+                {totalQuantity}
+              </p>
               <button
                 className="text-3xl flex items-center justify-center border-2 border-[hsla(52,98%,53%,0.5)] h-10 w-10 rounded-md cursor-pointer"
                 onClick={() => setDisplayVariation(product.id)}
