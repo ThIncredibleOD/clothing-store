@@ -17,7 +17,7 @@ export default function FullCollection() {
     <section className="p-8 md:p-12 flex flex-col gap-10">
       <header className="flex items-baseline-last gap-4">
         <div className="bg-[hsla(52,98%,53%,1)] h-5 w-5 rounded-full"></div>
-        <h2 className="text-3xl font-bold">The Full Collection</h2>
+        <h2 className="font-syne text-3xl font-bold">The Full Collection</h2>
       </header>
 
       <ul className="flex w-full flex-col items-center gap-10 md:flex-row md:flex-wrap md:items-stretch">
@@ -53,12 +53,12 @@ export default function FullCollection() {
                   />
                 </div>
 
-                <h3 className="text-xl font-bold md:text-2xl">
+                <h3 className="font-syne text-xl font-bold md:text-2xl">
                   {collection.title}
                 </h3>
               </Link>
               <div className="flex items-center justify-between">
-                <p className="md:text-lg">${collection.price}</p>
+                <p className="font-syne md:text-lg">${collection.price}</p>
 
                 {cart.some((item) => item.id === collection.id) ? (
                   <div className="flex w-fit items-center justify-between gap-4">

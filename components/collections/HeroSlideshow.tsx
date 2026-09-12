@@ -77,7 +77,7 @@ export default function HeroSlideshow() {
       </div>
 
       <div className="h-full flex flex-col justify-end gap-8 p-8 md:p-12">
-        <h1 className="text-5xl/14 md:text-7xl/14 max-w-62.5 md:max-w-none font-bold text-white">
+        <h1 className="font-syne text-5xl/14 md:text-7xl/14 max-w-62.5 md:max-w-none font-bold text-white">
           {slides[currentSlide].title}
         </h1>
         <p className="text-white text-shadow-[2px_2px_4px_hsla(0,0%,0%,1)] md:text-lg">
